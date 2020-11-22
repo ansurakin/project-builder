@@ -13,6 +13,7 @@ import javax.faces.application.ProjectStage;
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import java.util.Arrays;
 
 @Configuration
 public class JsfConfig extends SpringBootServletInitializer implements ServletContextAware {
@@ -26,11 +27,12 @@ public class JsfConfig extends SpringBootServletInitializer implements ServletCo
 
     @Bean
     public ServletRegistrationBean facesServlet() {
-        FacesServlet servlet = new FacesServlet();
-        ServletRegistrationBean registration = new ServletRegistrationBean(servlet, "*.xhtml");
-        registration.setName("FacesServlet");
-        registration.setLoadOnStartup(1);
-        return registration;
+        ServletRegistrationBean srb = new ServletRegistrationBean();
+        srb.setServlet(new FacesServlet());
+        srb.setUrlMappings(Arrays.asList("*.xhtml"));
+        srb.setName("FacesServlet");
+        srb.setLoadOnStartup(1);
+        return srb;
     }
 
     @Bean
