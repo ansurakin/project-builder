@@ -1,6 +1,11 @@
 # Getting Started
 Приложение создаёт каркас проекта.
 
+### Системные требования
+* java 1.8 и выше
+* maven
+* postgresql
+
 ### Запуск проекта
 Для запуска выполните следующее:
 * Создайте базу данных project-builder.
@@ -9,8 +14,12 @@
 ```
 mvn liquibase:update
 ```
-* Запустите проект
+* Сборка проекта
 ```
-mvn spring-boot:run
+mvn clean package
+```
+* Запуск проекта
+```
+java -jar project-builder.jar
 ```
 * Откройте в браузере [http://localhost:8080](http://localhost:8080)
