@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+
+                template="/template/mainLayout.xhtml">
+
+    <ui:define name="title">
+        Новый проект
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h:form id="newProjectForm">
+
+            <p:growl id="growl" life="2000"/>
+
+            <!--Навигационные кнопки-->
+            <ui:include src="/template/component/button/step-button-group.xhtml"/>
+
+            <div style="text-decoration: underline;">
+                <h3>Имя и расположение</h3>
+            </div>
+
+            <!--Fields-->
+            <div class="ui-fluid">
+                <p:panelGrid columns="3" columnClasses="ui-grid-col-2, ui-grid-col-5, ui-grid-col-1" layout="grid"
+                             styleClass="ui-panelgrid-blank ui-fluid">
+
+                    <p:outputLabel for="groupId" value="groupId:"/>
+                    <p:inputText id="groupId" value="#{nameAndLocationPageAction.project.pom.groupId}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="artifactId" value="artifactId:"/>
+                    <p:inputText id="artifactId" value="#{nameAndLocationPageAction.project.pom.artifactId}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="version" value="version:"/>
+                    <p:inputText id="version" value="#{nameAndLocationPageAction.project.pom.version}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="name" value="name:"/>
+                    <p:inputText id="name" value="#{nameAndLocationPageAction.project.pom.name}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="description" value="description:"/>
+                    <p:inputText id="description" value="#{nameAndLocationPageAction.project.pom.description}"/>
+                    <p:spacer/>
+
+                    <ui:remove><!--TODO properties-->s</ui:remove>
+
+                    <ui:remove><!--TODO auto concat--></ui:remove>
+                    <p:outputLabel for="packageName" value="packageName:"/>
+                    <p:inputText id="packageName" value="#{nameAndLocationPageAction.project.packageName}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="location" value="location:"/>
+                    <p:inputText id="location" value="#{nameAndLocationPageAction.project.location}"/>
+                    <p:spacer/>
+
+                </p:panelGrid>
+            </div>
+
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>

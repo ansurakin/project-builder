@@ -9,8 +9,20 @@
 ### Запуск проекта
 Для запуска выполните следующее:
 * Создайте базу данных project-builder.
-Выполните SQL скрипт src\main\resources\db\changelog\changes\structure_and_data.sql 
-или запустите команду 
+
+* Настройка базы данных
+Замените имя пользователя и пароль для базы данных на свои 
+в файле application.properties
+```
+spring.datasource.username=postgres
+spring.datasource.password=12345678
+```
+и в файле liquibase.properties
+```
+username=postgres
+password=12345678
+```
+запустите команду (или выполните SQL скрипт src\main\resources\db\changelog\changes\initial_structure_and_data.sql)  
 ```
 mvn liquibase:update
 ```
