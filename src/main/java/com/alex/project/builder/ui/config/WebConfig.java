@@ -25,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         for (Url item : list) {
             registry.addViewController(item.getUrl())
-                    .setViewName("forward:" + item.getView());
+                    .setViewName("forward:" + item.getPage());
         }
 
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);

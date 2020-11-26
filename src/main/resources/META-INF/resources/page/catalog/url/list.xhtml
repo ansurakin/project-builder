@@ -20,9 +20,8 @@
 
             <p:growl id="msgs" showDetail="true"/>
 
-            <!--TODO-->
             <div class="ui-g">
-                <p:button href="/catalog/url/create" value="Создать" icon="fa fa-fw fa-edit" target="_blank"/>
+                <p:button href="/page/catalog/url/create" value="Создать" icon="fa fa-fw fa-edit" target="_blank"/>
             </div>
 
             <p:dataTable id="dtUrlList"
@@ -38,7 +37,7 @@
                          editable="true"
             >
 
-                <p:ajax event="rowEdit" listener="#{urlListPageAction.onRowEdit}" update="urlListForm:msgs"/>
+                <p:ajax event="rowEdit" listener="#{urlListPageAction.onRowEdit}" update=":urlListForm:msgs"/>
                 <p:ajax event="rowEditCancel" listener="#{urlListPageAction.onRowCancel}" update=":urlListForm:msgs"/>
 
                 <p:column headerText="Id"
@@ -63,14 +62,14 @@
                 </p:column>
 
                 <p:column headerText="view"
-                          sortBy="#{item.view}"
-                          filterBy="#{item.view}" filterMatchMode="contains"
+                          sortBy="#{item.page}"
+                          filterBy="#{item.page}" filterMatchMode="contains"
 
                           width="20%"
                 >
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{item.view}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.view}" style="width:90%"/></f:facet>
+                        <f:facet name="output"><h:outputText value="#{item.page}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.page}" style="width:90%"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 

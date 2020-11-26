@@ -37,23 +37,23 @@ public class UrlListPageAction {
     public void onRowEdit(RowEditEvent event) {
         Url item = (Url) event.getObject();
         this.service.save(item);
-        this.showMessage("Обновлено", item.getId());
+        this.showMessage("Обновлено", String.valueOf(item.getId()));
     }
 
     public void onRowCancel(RowEditEvent event) {
         Url item = (Url) event.getObject();
-        this.showMessage("Отменено", item.getId());
+        this.showMessage("Отменено", String.valueOf(item.getId()));
     }
 
     public void delete(Url item) {
         this.service.delete(item.getId());
         this.list.remove(item);
 //        TODO filteredLid тоже?
-        this.showMessage("Удалено", item.getId());
+        this.showMessage("Удалено", String.valueOf(item.getId()));
     }
 
-    private void showMessage(String message, Long id) {
-        FacesMessage facesMessage = new FacesMessage(message, String.valueOf(id));
+    private void showMessage(String message, String detail) {
+        FacesMessage facesMessage = new FacesMessage(message, detail);
         FacesContext.getCurrentInstance().addMessage(null, facesMessage);
     }
 

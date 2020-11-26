@@ -17,7 +17,7 @@ public class Url extends BaseEntity {
     private String url;
 
     @NotNull
-    @Column(name = "view")
-    private String view;
+    @Column(name = "page")
+    private String page;
 
 }
