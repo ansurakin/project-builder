@@ -1,4 +1,4 @@
-package com.alex.project.builder.ui.view.catalog.url;
+package com.alex.project.builder.ui.page.catalog.url;
 
 import com.alex.project.builder.crud.url.UrlService;
 import com.alex.project.builder.entity.Url;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Component
 @ViewScoped
-public class UrlListView {
+public class UrlListPageAction {
 
     @Getter
     @Setter

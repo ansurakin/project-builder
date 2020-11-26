@@ -10,11 +10,11 @@ create table url
 );
 
 INSERT INTO url(id, url, view)
-VALUES (1, '/', '/ui/index.xhtml');
+VALUES (1, '/', '/index.xhtml');
 INSERT INTO url(id, url, view)
-VALUES (2, '/ui/view/catalog/url/list', '/ui/view/catalog/url/list.xhtml');
+VALUES (2, '/page/catalog/url/list', '/page/catalog/url/list.xhtml');
 INSERT INTO url(id, url, view)
-VALUES (3, '/ui/test', '/ui/view/test/helloworld.xhtml');
+VALUES (3, '/page/test', '/page/test/helloworld.xhtml');
 
 SELECT setval('url_id_seq', (SELECT max(id) FROM url));
 
