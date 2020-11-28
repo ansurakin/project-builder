@@ -37,5 +37,4 @@ build/
 .vscode/
 
 /log/
-### TODO ###
-/demo/pom.xml
+/tmp/

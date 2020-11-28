@@ -16,13 +16,13 @@ public class PomService {
     @Value("classpath:code/pom.ftl")
     private Resource pomFile;
 
-    public String create(Pom pom) {
+    public byte[] getBytes(Pom pom) {
         String template = FileUtil.fileToString(pomFile);
 
         Map<String, Object> data = new HashMap<>();
         data.put("pom", pom);
 
-        return FreemarkerUtil.getString(template, data);
+        return FreemarkerUtil.getString(template, data).getBytes();
     }
 
 }
