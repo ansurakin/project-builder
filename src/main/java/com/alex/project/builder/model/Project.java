@@ -1,5 +1,6 @@
 package com.alex.project.builder.model;
 
+import com.alex.project.builder.lib.SystemUtil;
 import com.alex.project.builder.model.pom.Pom;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ public class Project {
 
     private static final Pom DEFAULT_POM = Pom.getDefaultInstance();
 
-    private static final String DEFAULT_LOCATION = "C:\\";//TODO
+    private static final String DEFAULT_LOCATION = SystemUtil.getCurrentDir() + SystemUtil.fileSeparator + DEFAULT_POM.getName();//TODO
 
     private static final String DEFAULT_PACKAGE_NAME = "com.example.demo";
 
