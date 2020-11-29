@@ -46,13 +46,13 @@
                     <h:outputText value="#{item.id}"/>
                 </p:column>
 
-                <p:column headerText="name"
-                          sortBy="#{item.name}"
-                          filterBy="#{item.name}" filterMatchMode="contains"
+                <p:column headerText="key"
+                          sortBy="#{item.key}"
+                          filterBy="#{item.key}" filterMatchMode="contains"
                           width="20%">
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{item.name}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.name}" style="width:90%"/></f:facet>
+                        <f:facet name="output"><h:outputText value="#{item.key}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.key}" style="width:90%"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 

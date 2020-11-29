@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
 public class Code extends BaseEntity {
 
     @NotNull
-    @Column(name = "name")
-    private String name;
+    @Column(name = "key")
+    private String key;
 
     @NotNull
     @Column(name = "text")
