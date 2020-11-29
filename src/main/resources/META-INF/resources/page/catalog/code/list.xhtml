@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+
+                template="/template/mainLayout.xhtml">
+
+    <ui:define name="title">
+        Список
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h3>Справочник кодов</h3>
+
+        <h:form id="codeListForm">
+
+            <p:growl id="msgs" showDetail="true"/>
+
+            <div class="ui-g">
+                <p:button href="/page/catalog/code/create" value="Создать" icon="fa fa-fw fa-edit" target="_blank"/>
+            </div>
+
+            <p:dataTable id="codeListDt"
+                         value="#{codeListPageAction.list}"
+                         var="item"
+                         filteredValue="#{codeListPageAction.filteredList}"
+
+                         emptyMessage="Нет данных"
+                         sortMode="multiple"
+                         paginator="true" rows="20"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,20,100"
+                         editable="true">
+
+                <p:ajax event="rowEdit" listener="#{codeListPageAction.onRowEdit}" update=":codeListForm:msgs"/>
+                <p:ajax event="rowEditCancel" listener="#{codeListPageAction.onRowCancel}" update=":codeListForm:msgs"/>
+
+                <p:column headerText="Id"
+                          sortBy="#{item.id}"
+                          filterBy="#{item.id}"
+                          filterMatchMode="contains"
+                          width="10%">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+                <p:column headerText="name"
+                          sortBy="#{item.name}"
+                          filterBy="#{item.name}" filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.name}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.name}" style="width:90%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="location"
+                          sortBy="#{item.location}"
+                          filterBy="#{item.location}" filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.location}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.location}" style="width:90%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="text"
+                          sortBy="#{item.text}"
+                          filterBy="#{item.text}" filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText
+                                value="#{item.text.length() gt 100 ? item.text.substring(0,97).concat('...') : item.text}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.text}" style="width:90%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <!--Редактирование begin-->
+                <p:column headerText="Edit" style="width:5%">
+                    <p:rowEditor/>
+                </p:column>
+
+                <p:column headerText="Delete" style="width:5%">
+                    <p:commandButton actionListener="#{codeListPageAction.delete(item)}"
+                                     update=":codeListForm"
+                                     icon="ui-icon-trash"/>
+                </p:column>
+                <!--Редактирование end-->
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

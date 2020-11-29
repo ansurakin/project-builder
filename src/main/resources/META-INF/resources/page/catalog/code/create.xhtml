@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+
+                template="/template/mainLayout.xhtml">
+
+
+    <ui:define name="title">Создать</ui:define>
+
+
+    <ui:define name="content">
+        <h:form id="codeCreateForm">
+            <p:growl id="growl" life="2000">
+                <p:autoUpdate/>
+            </p:growl>
+
+            <div>
+                <p:commandButton id="saveButton"
+                                 action="#{codePageAction.save}"
+                                 value="Сохранить"
+                                 update="growl codePanel"/>
+
+                <span style="margin-right:20px;"/>
+
+                <p:commandButton id="cancellButton"
+                                 action="#{codePageAction.cancell}"
+                                 value="Отмена"
+                                 update="growl codePanel"/>
+            </div>
+
+            <p:separator/>
+
+            <div style="text-decoration: underline;">
+                <h3>Новый код</h3>
+            </div>
+
+            <!--Fields-->
+            <div class="ui-fluid">
+                <p:panelGrid
+                        id="codePanel"
+                        columns="3" columnClasses="ui-grid-col-2, ui-grid-col-5, ui-grid-col-1"
+                        layout="grid"
+                        styleClass="ui-panelgrid-blank ui-fluid">
+
+                    <p:outputLabel for="name" value="name:" style="float: right"/>
+                    <p:inputText id="name" value="#{codePageAction.code.name}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="location" value="location:" style="float: right"/>
+                    <p:inputText id="location" value="#{codePageAction.code.location}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="text" value="text:" style="float: right"/>
+                    <pe:codeMirror id="text"
+                                   mode="javascript"
+                                   theme="blackboard"
+                                   value="#{codePageAction.code.text}"
+                                   keyMap="default"
+                                   lineNumbers="true"
+                                   matchBrackets="true"/>
+                    <p:spacer/>
+                </p:panelGrid>
+            </div>
+
+        </h:form>
+    </ui:define>
+
+
+</ui:composition>
