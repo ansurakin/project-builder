@@ -10,11 +10,10 @@ import java.io.Writer;
 
 public class FreemarkerUtil {
 
-    public static String getString(String templateText, Object data) {
-        Configuration cfg = new Configuration();
+    public static String getString(Configuration configuration, String templateText, Object data) {
         Template template = null;
         try {
-            template = new Template("template", templateText, cfg);
+            template = new Template("template", templateText, configuration);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
