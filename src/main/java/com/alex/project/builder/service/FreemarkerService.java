@@ -10,8 +10,12 @@ public class FreemarkerService {
     @Autowired
     private freemarker.template.Configuration configuration;
 
+    public String getString(String template, Object data) {
+        return FreemarkerUtil.getString(configuration, template, data);
+    }
+
     public byte[] getBytes(String template, Object data) {
-        return FreemarkerUtil.getString(configuration, template, data).getBytes();
+        return getString(template, data).getBytes();
     }
 
 }

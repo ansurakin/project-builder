@@ -55,4 +55,20 @@ VALUES ('pom.xml', '/pom.xml', '<?xml version="1.0" encoding="UTF-8"?>
 </project>
 ');
 
+INSERT INTO code("key", "location", "text")
+VALUES ('Application.java', 'src/main/java/${packageDir}/Application.java', 'package ${packageName};
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+');
+
 SELECT setval('code_id_seq', (SELECT max(id) FROM code));

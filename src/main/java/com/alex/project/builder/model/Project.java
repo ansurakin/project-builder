@@ -5,6 +5,8 @@ import com.alex.project.builder.model.pom.Pom;
 import lombok.Getter;
 import lombok.Setter;
 
+import static com.alex.project.builder.lib.SystemUtil.fileSeparator;
+
 public class Project {
 
     private static final Pom DEFAULT_POM = Pom.getDefaultInstance();
@@ -31,6 +33,10 @@ public class Project {
         instance.setLocation(DEFAULT_LOCATION);
         instance.setPackageName(DEFAULT_PACKAGE_NAME);
         return instance;
+    }
+
+    public String getPackageDir() {
+        return String.join(fileSeparator, packageName.split("\\."));
     }
 
 }

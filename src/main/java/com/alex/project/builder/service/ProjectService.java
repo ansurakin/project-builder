@@ -39,6 +39,8 @@ public class ProjectService {
 
         Map<String, Object> data = new HashMap<String, Object>() {{
             put("pom", project.getPom());
+            put("packageDir", project.getPackageDir());
+            put("packageName", project.getPackageName());
         }};
 
         for (Code code : codes) {
@@ -50,7 +52,8 @@ public class ProjectService {
 
     private ProjectContent templateToCode(Code code, Object placeholder) {
         byte[] content = freemarkerService.getBytes(code.getText(), placeholder);
-        return new ProjectContent(FILE, code.getLocation(), content);
+        String location = freemarkerService.getString(code.getLocation(), placeholder);
+        return new ProjectContent(FILE, location, content);
     }
 
     private void createFiles(String projectDir, List<ProjectContent> contents) {
