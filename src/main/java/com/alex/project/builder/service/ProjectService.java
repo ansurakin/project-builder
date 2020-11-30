@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.alex.project.builder.crud.code.CodeService.KEY_POM_XML;
 import static com.alex.project.builder.lib.SystemUtil.fileSeparator;
 import static com.alex.project.builder.model.FileType.FILE;
 
@@ -35,12 +34,16 @@ public class ProjectService {
                 + "tmp"
                 + project.getLocation().substring(project.getLocation().lastIndexOf(fileSeparator));
 
-        Map<String, Object> pomData = new HashMap<String, Object>() {{
+        List<ProjectContent> projectContents = new ArrayList<>();
+        List<Code> codes = codeService.findAll();
+
+        Map<String, Object> data = new HashMap<String, Object>() {{
             put("pom", project.getPom());
         }};
 
-        List<ProjectContent> projectContents = new ArrayList<>();
-        projectContents.add(templateToCode(codeService.findByKey(KEY_POM_XML), pomData));
+        for (Code code : codes) {
+            projectContents.add(templateToCode(code, data));
+        }
 
         createFiles(projectTmpDirName, projectContents);
     }
@@ -52,7 +55,8 @@ public class ProjectService {
 
     private void createFiles(String projectDir, List<ProjectContent> contents) {
         for (ProjectContent content : contents) {
-            String location = projectDir + String.join(fileSeparator, content.getLocation().split("/"));
+            String location = projectDir + fileSeparator
+                    + String.join(fileSeparator, content.getLocation().split("/"));
             if (content.isFile()) {
                 try {
                     FileUtils.writeByteArrayToFile(new File(location), content.getContent());
