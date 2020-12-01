@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+
+                template="/template/mainLayout.xhtml">
+
+
+    <ui:define name="title">Создать</ui:define>
+
+
+    <ui:define name="content">
+        <h:form id="placeholderCreateForm">
+            <div>
+                <p:commandButton id="saveButton"
+                                 action="#{placeholderPageAction.save}"
+                                 value="Сохранить"
+                                 update="growl placeholderPanel"/>
+
+                <span style="margin-right:20px;"/>
+
+                <p:commandButton id="cancellButton"
+                                 action="#{placeholderPageAction.cancell}"
+                                 value="Отмена"
+                                 update="growl placeholderPanel"/>
+            </div>
+
+            <p:separator/>
+
+            <div style="text-decoration: underline;">
+                <h3>Новый заполнитель</h3>
+            </div>
+
+            <!--Fields-->
+            <div class="ui-fluid">
+                <p:panelGrid
+                        id="placeholderPanel"
+                        columns="3" columnClasses="ui-grid-col-2, ui-grid-col-5, ui-grid-col-1"
+                        layout="grid"
+                        styleClass="ui-panelgrid-blank ui-fluid">
+
+                    <p:outputLabel for="key" value="key:" style="float: right"/>
+                    <p:inputText id="key" value="#{placeholderPageAction.data.key}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="value" value="value:" style="float: right"/>
+                    <p:inputText id="value" value="#{placeholderPageAction.data.value}"/>
+                    <p:spacer/>
+
+                    <p:outputLabel for="description" value="description:" style="float: right"/>
+                    <p:inputText id="description" value="#{placeholderPageAction.data.description}"/>
+                    <p:spacer/>
+                </p:panelGrid>
+            </div>
+
+        </h:form>
+    </ui:define>
+
+
+</ui:composition>

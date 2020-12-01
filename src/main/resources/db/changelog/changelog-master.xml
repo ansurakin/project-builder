@@ -4,11 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
 
-        http://www.liquibase.org/xml/ns/dbchangelog-ext
-        http://www.liquibase.org/xml/ns/dbchangelog-ext">
+        gelog-ext">
 
     <include file="src/main/resources/db/changelog/changes/initial_structure_and_data.sql"/>
     <include file="src/main/resources/db/changelog/changes/001-insert-url.sql"/>
     <include file="src/main/resources/db/changelog/changes/002_create_code.sql"/>
     <include file="src/main/resources/db/changelog/changes/003_insert_url.sql"/>
+    <include file="src/main/resources/db/changelog/changes/004_create_placeholder.sql"/>
+    <include file="src/main/resources/db/changelog/changes/005_insert_url.sql"/>
 </databaseChangeLog>

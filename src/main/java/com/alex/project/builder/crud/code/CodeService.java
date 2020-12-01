@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodeService extends BaseService<Code, Long> {
 
-    public static final String KEY_POM_XML = "pom.xml";
-
     @Autowired
     private CodeRepository codeRepository;
 
