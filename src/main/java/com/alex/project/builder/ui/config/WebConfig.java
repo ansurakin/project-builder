@@ -1,7 +1,7 @@
 package com.alex.project.builder.ui.config;
 
-import com.alex.project.builder.crud.url.UrlService;
-import com.alex.project.builder.entity.Url;
+import com.alex.project.builder.domain.entity.Url;
+import com.alex.project.builder.service.crud.url.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

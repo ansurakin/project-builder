@@ -1,6 +1,6 @@
 package com.alex.project.builder.ui.page.project;
 
-import com.alex.project.builder.model.Project;
+import com.alex.project.builder.domain.model.Project;
 import com.alex.project.builder.service.ProjectService;
 import com.alex.project.builder.ui.util.FacesUtil;
 import lombok.Getter;

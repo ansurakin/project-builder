@@ -1,7 +1,7 @@
 package com.alex.project.builder.ui.page.catalog.placeholder;
 
-import com.alex.project.builder.crud.placeholder.PlaceholderService;
-import com.alex.project.builder.entity.Placeholder;
+import com.alex.project.builder.domain.entity.Placeholder;
+import com.alex.project.builder.service.crud.placeholder.PlaceholderService;
 import com.alex.project.builder.ui.util.FacesUtil;
 import lombok.Getter;
 import lombok.Setter;

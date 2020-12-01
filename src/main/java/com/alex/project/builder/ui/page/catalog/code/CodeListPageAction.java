@@ -1,7 +1,7 @@
 package com.alex.project.builder.ui.page.catalog.code;
 
-import com.alex.project.builder.crud.code.CodeService;
-import com.alex.project.builder.entity.Code;
+import com.alex.project.builder.domain.entity.Code;
+import com.alex.project.builder.service.crud.code.CodeService;
 import com.alex.project.builder.ui.util.FacesUtil;
 import lombok.Getter;
 import lombok.Setter;

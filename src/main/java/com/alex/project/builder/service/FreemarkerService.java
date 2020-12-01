@@ -1,6 +1,6 @@
 package com.alex.project.builder.service;
 
-import com.alex.project.builder.util.FreemarkerUtil;
+import com.alex.project.builder.common.util.FreemarkerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

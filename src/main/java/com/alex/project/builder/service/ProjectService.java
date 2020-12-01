@@ -1,10 +1,10 @@
 package com.alex.project.builder.service;
 
-import com.alex.project.builder.crud.code.CodeService;
-import com.alex.project.builder.entity.Code;
-import com.alex.project.builder.lib.FileUtil;
-import com.alex.project.builder.model.Project;
-import com.alex.project.builder.model.ProjectContent;
+import com.alex.project.builder.common.lib.FileUtil;
+import com.alex.project.builder.domain.entity.Code;
+import com.alex.project.builder.domain.model.Project;
+import com.alex.project.builder.domain.model.ProjectContent;
+import com.alex.project.builder.service.crud.code.CodeService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.alex.project.builder.lib.SystemUtil.fileSeparator;
-import static com.alex.project.builder.model.FileType.FILE;
+import static com.alex.project.builder.common.lib.SystemUtil.fileSeparator;
+import static com.alex.project.builder.domain.model.FileType.FILE;
 
 @Service
 public class ProjectService {

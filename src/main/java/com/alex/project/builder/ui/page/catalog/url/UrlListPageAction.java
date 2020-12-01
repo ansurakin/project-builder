@@ -1,7 +1,7 @@
 package com.alex.project.builder.ui.page.catalog.url;
 
-import com.alex.project.builder.crud.url.UrlService;
-import com.alex.project.builder.entity.Url;
+import com.alex.project.builder.domain.entity.Url;
+import com.alex.project.builder.service.crud.url.UrlService;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.event.RowEditEvent;
