@@ -2,21 +2,11 @@
 
 1. Логгирование в базу
 2. Разобраться, BaseService, BaseRepository новый или Autowired как в потомке?
-3. Cделать контроллеры insert (через id = -1, null?), update, upsert.
-4. Переименовать customMenu в mainMenu
-5. Меню переделать на объектную модель см. custom-menu.xhtml
 6. Проверить VewScope, SessionScope
-7. pom.xml убрать joinfaces. ViewScope
-8. Переименовать BaseController в ApiController или RestController
 9. Переделать оповещение через oncomplete="PF('greetingDialog').show()"
 
 Ошибки
 
-
-UIInstructions cannot be cast to org.primefaces.model.menu.MenuElement
-
-Убрать комментарии
-Just add this to your web.xml:
 
 <context-param>
    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
