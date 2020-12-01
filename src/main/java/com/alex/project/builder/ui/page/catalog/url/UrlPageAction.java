@@ -2,7 +2,7 @@ package com.alex.project.builder.ui.page.catalog.url;
 
 import com.alex.project.builder.crud.url.UrlService;
 import com.alex.project.builder.entity.Url;
-import com.alex.project.builder.ui.util.FacesContextUtil;
+import com.alex.project.builder.ui.util.FacesUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +31,12 @@ public class UrlPageAction {
     public void save() throws IOException {
         service.save(url);
         init();
-        FacesContextUtil.addMessageInfo("Сохранено");
+        FacesUtil.addMessageInfo("Сохранено");
     }
 
     public void cancell() {
         init();
-        FacesContextUtil.addMessageInfo("Отменено");
+        FacesUtil.addMessageInfo("Отменено");
     }
 
 }

@@ -1,44 +1,51 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:remove>Кнопки навигации. Назад, Далее и т.д.</ui:remove>
 
+<composite:interface
+        name="step-button-group"
+        displayName="Step button group"
+        shortDescription="Группа пошаговых кнопок. Назад, Далее и т.д.">
+    <composite:attribute name="previousButtonAction" method-signature="void method()"/>
+    <composite:attribute name="previousButtonDisabled" type="boolean" default="false"/>
+
+    <composite:attribute name="nextButtonAction" method-signature="void method()"/>
+    <composite:attribute name="nextButtonDisabled" type="boolean" default="false"/>
+
+    <composite:attribute name="finishButtonAction" method-signature="void method()"/>
+    <composite:attribute name="finishButtonDisabled" type="boolean" default="false"/>
+
+    <composite:attribute name="cancellButtonAction" method-signature="void method()"/>
+    <composite:attribute name="cancellButtonDisabled" type="boolean" default="false"/>
+</composite:interface>
+
+
+<composite:implementation>
     <div>
-
         <p:commandButton id="previousButton"
-                         action="#{stepButtonGroupVc.previousButtonAction}"
                          value="&lt; Назад"
+                         disabled="#{cc.attrs.previousButtonDisabled}"
+                         action="#{cc.attrs.previousButtonAction}"/>
 
-                         disabled="true" ajax="false" update="growl"
-        />
-
-        <!--TODO-->
         <p:commandButton id="nextButton"
-                         action="#{stepButtonGroupVc.nextButtonAction}"
                          value="Далее &gt;"
+                         disabled="#{cc.attrs.nextButtonDisabled}"
+                         action="#{cc.attrs.nextButtonAction}"/>
 
-                         ajax="false" update="growl"
-        />
-
-        <!--TODO-->
         <p:commandButton id="finishButton"
-                         action="#{nameAndLocationPageAction.finish}"
                          value="Готово"
-                         update="growl"
-        />
+                         disabled="#{cc.attrs.finishButtonDisabled}"
+                         action="#{cc.attrs.finishButtonAction}"/>
 
         <span style="margin-right:20px;"/>
 
-        <!--TODO-->
         <p:commandButton id="cancellButton"
-                         action="#{stepButtonGroupVc.cancellButtonAction}"
                          value="Отмена"
-
-                         ajax="false" update="growl"
-        />
+                         disabled="#{cc.attrs.cancellButtonDisabled}"
+                         action="#{cc.attrs.cancellButtonAction}"/>
     </div>
+</composite:implementation>
 
-</ui:composition>
+
+</html>

@@ -4,3 +4,6 @@ https://milmonosmilmaquinas.com/2020/03/28/spring-boot-y-jsf-con-joinfaces/
 https://www.logicbig.com/tutorials/spring-framework/spring-boot/boot-primefaces-integration.html
 https://medium.com/@starsoftwares.corp/mepeando-e-populando-classes-com-springboot-hibernate-primefaces-e-postgresql-608a4038b62f
 https://medium.com/@tsepomaleka/integrating-spring-boot-with-java-server-faces-using-joinfaces-297e64f6a28f
+
+Составные компоненты
+https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/cc/tld-summary.html

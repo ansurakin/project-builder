@@ -2,7 +2,7 @@ package com.alex.project.builder.ui.page.catalog.code;
 
 import com.alex.project.builder.crud.code.CodeService;
 import com.alex.project.builder.entity.Code;
-import com.alex.project.builder.ui.util.FacesContextUtil;
+import com.alex.project.builder.ui.util.FacesUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.event.RowEditEvent;
@@ -36,17 +36,17 @@ public class CodeListPageAction {
     public void onRowEdit(RowEditEvent event) {
         Code item = (Code) event.getObject();
         this.service.save(item);
-        FacesContextUtil.addMessageInfo("Обновлено");
+        FacesUtil.addMessageInfo("Обновлено");
     }
 
     public void onRowCancel(RowEditEvent event) {
-        FacesContextUtil.addMessageInfo("Отменено");
+        FacesUtil.addMessageInfo("Отменено");
     }
 
     public void delete(Code item) {
         this.service.delete(item.getId());
         this.list.remove(item);
-        FacesContextUtil.addMessageInfo("Удалено");
+        FacesUtil.addMessageInfo("Удалено");
     }
 
 }
