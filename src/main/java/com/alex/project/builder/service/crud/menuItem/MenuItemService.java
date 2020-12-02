@@ -13,10 +13,13 @@ public class MenuItemService extends BaseService<MenuItem, Long> {
     @Autowired
     private MenuItemRepository repository;
 
-    public List<MenuItem> findByMenuId(Long menuId) {
-        return repository.findByMenuId(menuId);
+    @Override
+    public List<MenuItem> findAll() {
+        return findAll(SORT_BY_ORDER_NUMBER_AND_ID);
     }
 
-    ;
+    public List<MenuItem> findByMenuId(Long menuId) {
+        return repository.findByMenuId(menuId, SORT_BY_ORDER_NUMBER_AND_ID);
+    }
 
 }

@@ -105,6 +105,21 @@
                     </p:cellEditor>
                 </p:column>
 
+                <p:column headerText="order_number"
+                          sortBy="#{item.orderNumber}"
+                          filterBy="#{item.orderNumber}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.orderNumber}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{item.orderNumber}" style="width:90%"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
                 <!--Редактирование begin-->
                 <p:column headerText="Edit" style="width:5%">
                     <p:rowEditor/>

@@ -27,4 +27,7 @@ public class MenuItem extends BaseEntity {
     @JoinColumn(name = "url_id")
     private Url url;
 
+    @Column(name = "order_number")
+    private Long orderNumber;
+
 }

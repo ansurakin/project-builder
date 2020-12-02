@@ -16,4 +16,7 @@ public class Menu extends BaseEntity {
     @Column(name = "label")
     private String label;
 
+    @Column(name = "order_number")
+    private Long orderNumber;
+
 }
