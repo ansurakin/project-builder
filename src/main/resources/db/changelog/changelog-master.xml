@@ -11,5 +11,7 @@
     <include file="src/main/resources/db/changelog/changes/003_insert_url.sql"/>
     <include file="src/main/resources/db/changelog/changes/004_create_placeholder.sql"/>
     <include file="src/main/resources/db/changelog/changes/005_insert_url.sql"/>
+    <include file="src/main/resources/db/changelog/changes/006_create_menu.sql"/>
+    <include file="src/main/resources/db/changelog/changes/007_create_menu_item.sql"/>
 
 </databaseChangeLog>

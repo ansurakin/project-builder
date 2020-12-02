@@ -12,4 +12,4 @@ create table placeholder
 INSERT INTO placeholder("key", "value", "description")
 VALUES ('application.test', 'test', null);
 
-SELECT setval('placeholder_id_seq', (SELECT max(id) FROM code));
+SELECT setval('placeholder_id_seq', (SELECT max(id) FROM placeholder));

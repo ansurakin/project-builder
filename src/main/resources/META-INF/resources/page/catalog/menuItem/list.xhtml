@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+
+                template="/template/mainLayout.xhtml">
+
+    <ui:define name="title">
+        Список
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h3>Справочник элементов меню</h3>
+
+        <h:form id="menuItemListForm">
+
+            <div class="ui-g">
+                <p:button href="/page/catalog/menuItem/create" value="Создать" icon="fa fa-fw fa-edit"
+                          target="_blank"/>
+            </div>
+
+            <p:dataTable id="menuItemListDt"
+                         value="#{menuItemListPageAction.list}"
+                         var="item"
+                         filteredValue="#{menuItemListPageAction.filteredList}"
+
+                         emptyMessage="Нет данных"
+                         sortMode="multiple"
+                         paginator="true" rows="20"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,20,100"
+                         editable="true">
+
+                <p:ajax event="rowEdit" listener="#{menuItemListPageAction.onRowEdit}"/>
+                <p:ajax event="rowEditCancel" listener="#{menuItemListPageAction.onRowCancel}"/>
+
+                <p:column headerText="Id"
+                          sortBy="#{item.id}"
+                          filterBy="#{item.id}"
+                          filterMatchMode="contains"
+                          width="10%">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+                <p:column headerText="value"
+                          sortBy="#{item.value}"
+                          filterBy="#{item.value}" filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.value}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.value}" style="width:90%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="icon"
+                          sortBy="#{item.icon}"
+                          filterBy="#{item.icon}" filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.icon}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.icon}" style="width:90%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="menu"
+                          sortBy="#{item.menu.label}"
+                          filterBy="#{item.menu.label}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.menu.label}"/></f:facet>
+                        <f:facet name="input">
+                            <p:selectOneMenu value="#{item.menu}"
+                                             style="width:100%"
+                                             converter="menuConverter">
+                                <f:selectItems value="#{menuItemListPageAction.menuList}"
+                                               var="selectedItem"
+                                               itemLabel="#{selectedItem.label}"
+                                               itemValue="#{selectedItem}"/>
+                            </p:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="url"
+                          sortBy="#{item.url.url}"
+                          filterBy="#{item.url.url}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.url.url}"/></f:facet>
+                        <f:facet name="input">
+                            <p:selectOneMenu value="#{item.url}"
+                                             style="width:100%"
+                                             converter="urlConverter">
+                                <f:selectItems value="#{menuItemListPageAction.urlList}"
+                                               var="selectedItem"
+                                               itemLabel="#{selectedItem.url}"
+                                               itemValue="#{selectedItem}"/>
+                            </p:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <!--Редактирование begin-->
+                <p:column headerText="Edit" style="width:5%">
+                    <p:rowEditor/>
+                </p:column>
+
+                <p:column headerText="Delete" style="width:5%">
+                    <p:commandButton actionListener="#{menuItemListPageAction.delete(item)}"
+                                     update=":menuItemListForm"
+                                     icon="ui-icon-trash"/>
+                </p:column>
+                <!--Редактирование end-->
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

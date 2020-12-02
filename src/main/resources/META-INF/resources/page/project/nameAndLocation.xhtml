@@ -2,7 +2,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:myComponent="http://xmlns.jcp.org/jsf/composite/template/component/button"
+                xmlns:myComponent="http://xmlns.jcp.org/jsf/composite/template/lib/button"
 
                 template="/template/mainLayout.xhtml">
 
@@ -50,8 +50,6 @@
                     <p:outputLabel for="description" value="description:"/>
                     <p:inputText id="description" value="#{nameAndLocationPageAction.project.pom.description}"/>
                     <p:spacer/>
-
-                    <ui:remove><!--TODO properties-->s</ui:remove>
 
                     <ui:remove><!--TODO auto concat--></ui:remove>
                     <p:outputLabel for="packageName" value="packageName:"/>

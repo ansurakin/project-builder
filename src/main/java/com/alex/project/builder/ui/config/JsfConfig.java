@@ -43,6 +43,7 @@ public class JsfConfig extends SpringBootServletInitializer implements ServletCo
     @Override
     public void setServletContext(ServletContext servletContext) {
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
+        servletContext.setInitParameter("javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL", "true");//при сабмите формы будет передаваться null вместо пустой сторки
         servletContext.setInitParameter(Constants.ContextParams.FONT_AWESOME, "true");
         servletContext.setInitParameter(Constants.ContextParams.THEME, "afterdark");
     }
