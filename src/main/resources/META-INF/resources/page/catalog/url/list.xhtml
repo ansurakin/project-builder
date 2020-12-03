@@ -28,14 +28,13 @@
                          value="#{urlListPageAction.list}"
                          var="item"
                          filteredValue="#{urlListPageAction.filteredList}"
-
                          emptyMessage="Нет данных"
                          sortMode="multiple"
-                         paginator="true" rows="20"
+                         paginator="true"
+                         rows="20"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,20,100"
-                         editable="true"
-            >
+                         editable="true">
 
                 <p:ajax event="rowEdit" listener="#{urlListPageAction.onRowEdit}" update=":urlListForm:msgs"/>
                 <p:ajax event="rowEditCancel" listener="#{urlListPageAction.onRowCancel}" update=":urlListForm:msgs"/>
@@ -43,33 +42,31 @@
                 <p:column headerText="Id"
                           sortBy="#{item.id}"
                           filterBy="#{item.id}" filterMatchMode="contains"
-
-                          width="10%"
-                >
+                          width="10%">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
 
                 <p:column headerText="url"
                           sortBy="#{item.url}"
-                          filterBy="#{item.url}" filterMatchMode="contains"
-
-                          width="20%"
-                >
+                          filterBy="#{item.url}"
+                          filterMatchMode="contains"
+                          width="30%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.url}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.url}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.url}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="view"
                           sortBy="#{item.page}"
-                          filterBy="#{item.page}" filterMatchMode="contains"
-
-                          width="20%"
-                >
+                          filterBy="#{item.page}"
+                          filterMatchMode="contains"
+                          width="30%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.page}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.page}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.page}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 

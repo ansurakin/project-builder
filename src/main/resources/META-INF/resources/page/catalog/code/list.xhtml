@@ -27,7 +27,6 @@
                          value="#{codeListPageAction.list}"
                          var="item"
                          filteredValue="#{codeListPageAction.filteredList}"
-
                          emptyMessage="Нет данных"
                          sortMode="multiple"
                          paginator="true" rows="20"
@@ -52,7 +51,8 @@
                           width="20%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.key}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.key}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.key}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
@@ -62,7 +62,8 @@
                           width="20%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.location}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.location}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.location}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
@@ -73,7 +74,8 @@
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText
                                 value="#{item.text.length() gt 100 ? item.text.substring(0,97).concat('...') : item.text}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.text}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.text}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 

@@ -18,7 +18,9 @@
         <h:form id="menuItemListForm">
 
             <div class="ui-g">
-                <p:button href="/page/catalog/menuItem/create" value="Создать" icon="fa fa-fw fa-edit"
+                <p:button href="/page/catalog/menuItem/create"
+                          value="Создать"
+                          icon="fa fa-fw fa-edit"
                           target="_blank"/>
             </div>
 
@@ -26,7 +28,6 @@
                          value="#{menuItemListPageAction.list}"
                          var="item"
                          filteredValue="#{menuItemListPageAction.filteredList}"
-
                          emptyMessage="Нет данных"
                          sortMode="multiple"
                          paginator="true" rows="20"
@@ -41,27 +42,31 @@
                           sortBy="#{item.id}"
                           filterBy="#{item.id}"
                           filterMatchMode="contains"
-                          width="10%">
+                          width="5%">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
 
                 <p:column headerText="value"
                           sortBy="#{item.value}"
-                          filterBy="#{item.value}" filterMatchMode="contains"
-                          width="20%">
+                          filterBy="#{item.value}"
+                          filterMatchMode="contains"
+                          width="15%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.value}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.value}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.value}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="icon"
                           sortBy="#{item.icon}"
-                          filterBy="#{item.icon}" filterMatchMode="contains"
-                          width="20%">
+                          filterBy="#{item.icon}"
+                          filterMatchMode="contains"
+                          width="10%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.icon}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.icon}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.icon}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
@@ -69,7 +74,7 @@
                           sortBy="#{item.menu.label}"
                           filterBy="#{item.menu.label}"
                           filterMatchMode="contains"
-                          width="20%">
+                          width="15%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.menu.label}"/></f:facet>
                         <f:facet name="input">
@@ -89,7 +94,7 @@
                           sortBy="#{item.url.url}"
                           filterBy="#{item.url.url}"
                           filterMatchMode="contains"
-                          width="20%">
+                          width="25%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.url.url}"/></f:facet>
                         <f:facet name="input">
@@ -105,17 +110,17 @@
                     </p:cellEditor>
                 </p:column>
 
-                <p:column headerText="order_number"
+                <p:column headerText="orderNumber"
                           sortBy="#{item.orderNumber}"
                           filterBy="#{item.orderNumber}"
                           filterMatchMode="contains"
-                          width="20%">
+                          width="10%">
                     <p:cellEditor>
                         <f:facet name="output">
                             <h:outputText value="#{item.orderNumber}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{item.orderNumber}" style="width:90%"/>
+                            <p:inputText value="#{item.orderNumber}" style="width:100%; box-sizing: border-box;"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>

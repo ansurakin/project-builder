@@ -18,7 +18,9 @@
         <h:form id="placeholderListForm">
 
             <div class="ui-g">
-                <p:button href="/page/catalog/placeholder/create" value="Создать" icon="fa fa-fw fa-edit"
+                <p:button href="/page/catalog/placeholder/create"
+                          value="Создать"
+                          icon="fa fa-fw fa-edit"
                           target="_blank"/>
             </div>
 
@@ -26,7 +28,6 @@
                          value="#{placeholderListPageAction.list}"
                          var="item"
                          filteredValue="#{placeholderListPageAction.filteredList}"
-
                          emptyMessage="Нет данных"
                          sortMode="multiple"
                          paginator="true" rows="20"
@@ -47,31 +48,37 @@
 
                 <p:column headerText="key"
                           sortBy="#{item.key}"
-                          filterBy="#{item.key}" filterMatchMode="contains"
+                          filterBy="#{item.key}"
+                          filterMatchMode="contains"
                           width="20%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.key}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.key}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.key}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="value"
                           sortBy="#{item.value}"
-                          filterBy="#{item.value}" filterMatchMode="contains"
+                          filterBy="#{item.value}"
+                          filterMatchMode="contains"
                           width="20%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.value}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.value}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.value}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="description"
                           sortBy="#{item.description}"
-                          filterBy="#{item.description}" filterMatchMode="contains"
+                          filterBy="#{item.description}"
+                          filterMatchMode="contains"
                           width="20%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.description}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.description}" style="width:90%"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.description}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
