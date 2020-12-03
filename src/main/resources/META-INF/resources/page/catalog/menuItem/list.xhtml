@@ -46,15 +46,16 @@
                     <h:outputText value="#{item.id}"/>
                 </p:column>
 
-                <p:column headerText="value"
-                          sortBy="#{item.value}"
-                          filterBy="#{item.value}"
+                <p:column headerText="name"
+                          sortBy="#{item.name}"
+                          filterBy="#{item.name}"
                           filterMatchMode="contains"
                           width="15%">
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{item.value}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.value}"
-                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
+                        <f:facet name="output"><h:outputText value="#{item.name}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.name}"
+                                                           style="width:100%; box-sizing: border-box;"/>
+                        </f:facet>
                     </p:cellEditor>
                 </p:column>
 
@@ -76,14 +77,14 @@
                           filterMatchMode="contains"
                           width="15%">
                     <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{item.menu.label}"/></f:facet>
+                        <f:facet name="output"><h:outputText value="#{item.menu.name}"/></f:facet>
                         <f:facet name="input">
                             <p:selectOneMenu value="#{item.menu}"
                                              style="width:100%"
                                              converter="menuConverter">
                                 <f:selectItems value="#{menuItemListPageAction.menuList}"
                                                var="selectedItem"
-                                               itemLabel="#{selectedItem.label}"
+                                               itemLabel="#{selectedItem.name}"
                                                itemValue="#{selectedItem}"/>
                             </p:selectOneMenu>
                         </f:facet>

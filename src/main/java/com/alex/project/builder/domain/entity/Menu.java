@@ -13,8 +13,8 @@ import javax.validation.constraints.NotNull;
 public class Menu extends BaseEntity {
 
     @NotNull
-    @Column(name = "label")
-    private String label;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "order_number")
     private Long orderNumber;

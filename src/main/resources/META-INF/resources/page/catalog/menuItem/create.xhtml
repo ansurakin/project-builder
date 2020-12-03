@@ -40,8 +40,8 @@
                         layout="grid"
                         styleClass="ui-panelgrid-blank ui-fluid">
 
-                    <p:outputLabel for="@next" value="value:" style="float: right"/>
-                    <p:inputText id="value" value="#{menuItemPageAction.data.value}"/>
+                    <p:outputLabel for="@next" value="name:" style="float: right"/>
+                    <p:inputText id="name" value="#{menuItemPageAction.data.name}"/>
                     <p:spacer/>
 
                     <p:outputLabel for="@next" value="icon:" style="float: right"/>
@@ -55,7 +55,7 @@
                                      converter="menuConverter">
                         <f:selectItems value="#{menuItemListPageAction.menuList}"
                                        var="selectedItem"
-                                       itemLabel="#{selectedItem.label}"
+                                       itemLabel="#{selectedItem.name}"
                                        itemValue="#{selectedItem}"/>
                     </p:selectOneMenu>
                     <p:spacer/>

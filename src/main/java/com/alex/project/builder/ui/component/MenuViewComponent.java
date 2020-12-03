@@ -50,7 +50,7 @@ public class MenuViewComponent {
         List<Menu> menuList = menuService.findAll();
         for (Menu menu : menuList) {
             DefaultSubMenu facesSubmenu = DefaultSubMenu.builder()
-                    .label(menu.getLabel())
+                    .label(menu.getName())
                     .build();
             fillSubMenu(facesSubmenu, menu.getId());
             result.add(facesSubmenu);
@@ -62,7 +62,7 @@ public class MenuViewComponent {
         List<MenuItem> menuItemList = menuItemService.findByMenuId(menuId);
         for (MenuItem menuItem : menuItemList) {
             MyDefaultMenuItem facesMenuItem = new MyDefaultMenuItem();
-            facesMenuItem.setValue(menuItem.getValue());
+            facesMenuItem.setValue(menuItem.getName());
             facesMenuItem.setUrl(menuItem.getUrl().getUrl());
             facesMenuItem.setIcon(menuItem.getIcon());
             facesMenuItem.setStyleClass("#{view.viewId.equals('" + menuItem.getUrl().getPage() + "') ? 'ui-state-active' : ''}");

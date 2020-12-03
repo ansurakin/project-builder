@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 public class MenuItem extends BaseEntity {
 
     @NotNull
-    @Column(name = "value")
-    private String value;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "icon")
     private String icon;
