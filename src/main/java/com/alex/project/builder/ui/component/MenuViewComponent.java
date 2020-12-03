@@ -5,7 +5,6 @@ import com.alex.project.builder.domain.entity.MenuItem;
 import com.alex.project.builder.service.crud.menu.MenuService;
 import com.alex.project.builder.service.crud.menuItem.MenuItemService;
 import lombok.Getter;
-import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
@@ -62,11 +61,11 @@ public class MenuViewComponent {
     private void fillSubMenu(DefaultSubMenu subMenu, Long menuId) {
         List<MenuItem> menuItemList = menuItemService.findByMenuId(menuId);
         for (MenuItem menuItem : menuItemList) {
-            DefaultMenuItem facesMenuItem = DefaultMenuItem.builder()
-                    .value(menuItem.getValue())
-                    .url(menuItem.getUrl().getUrl())
-                    .icon(menuItem.getIcon())
-                    .build();
+            MyDefaultMenuItem facesMenuItem = new MyDefaultMenuItem();
+            facesMenuItem.setValue(menuItem.getValue());
+            facesMenuItem.setUrl(menuItem.getUrl().getUrl());
+            facesMenuItem.setIcon(menuItem.getIcon());
+            facesMenuItem.setStyleClass("#{view.viewId.equals('" + menuItem.getUrl().getPage() + "') ? 'ui-state-active' : ''}");
             subMenu.getElements().add(facesMenuItem);
         }
     }
