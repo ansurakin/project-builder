@@ -22,7 +22,7 @@ spring.datasource.password=12345678
 username=postgres
 password=12345678
 ```
-запустите команду (или выполните SQL скрипт src\main\resources\db\changelog\changes\initial_structure_and_data.sql)  
+запустите команду (или выполните SQL скрипт src\main\resources\db\changelog\changes\initial-structure-and-data.sql)  
 ```
 mvn liquibase:update
 ```
