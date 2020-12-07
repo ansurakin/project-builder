@@ -4,20 +4,21 @@ import com.alex.project.builder.domain.entity.Menu;
 import com.alex.project.builder.domain.entity.MenuItem;
 import com.alex.project.builder.service.crud.menu.MenuService;
 import com.alex.project.builder.service.crud.menuItem.MenuItemService;
+import com.alex.project.builder.ui.model.MyDefaultMenuItem;
 import lombok.Getter;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@SessionScoped
+@SessionScope
 public class MenuViewComponent {
 
     @Getter

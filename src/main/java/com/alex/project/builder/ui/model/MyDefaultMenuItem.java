@@ -1,4 +1,4 @@
-package com.alex.project.builder.ui.component;
+package com.alex.project.builder.ui.model;
 
 import org.primefaces.model.menu.DefaultMenuItem;
 
