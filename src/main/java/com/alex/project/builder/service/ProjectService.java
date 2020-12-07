@@ -1,9 +1,9 @@
 package com.alex.project.builder.service;
 
-import com.alex.project.builder.common.lib.FileUtil;
+import com.alex.project.builder.common.lib.SystemUtil;
 import com.alex.project.builder.domain.entity.Code;
 import com.alex.project.builder.domain.model.Project;
-import com.alex.project.builder.domain.model.ProjectContent;
+import com.alex.project.builder.domain.model.ProjectFile;
 import com.alex.project.builder.service.crud.code.CodeService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.alex.project.builder.common.lib.SystemUtil.fileSeparator;
-import static com.alex.project.builder.domain.model.FileType.FILE;
 
 @Service
 public class ProjectService {
@@ -29,49 +28,40 @@ public class ProjectService {
     private FreemarkerService freemarkerService;
 
     public void create(Project project) {
-        String projectTmpDirName = project.getLocation().substring(0, project.getLocation().lastIndexOf(fileSeparator))
-                + fileSeparator
-                + "tmp"
-                + project.getLocation().substring(project.getLocation().lastIndexOf(fileSeparator));
+        List<ProjectFile> projectFiles = getProjectFiles(project);
+        createFiles(projectFiles);
+    }
 
-        List<ProjectContent> projectContents = new ArrayList<>();
-        List<Code> codes = codeService.findAll();
-
+    public List<ProjectFile> getProjectFiles(Project project) {
+        List<Code> templates = codeService.findAll();
         Map<String, Object> data = new HashMap<String, Object>() {{
             put("pom", project.getPom());
             put("packageDir", project.getPackageDir());
             put("packageName", project.getPackageName());
         }};
 
-        for (Code code : codes) {
-            projectContents.add(templateToCode(code, data));
+        String projectTmpDirName = String.join(fileSeparator, SystemUtil.getCurrentDir(), "tmp", "tmp" + System.currentTimeMillis());
+        return getProjectFiles(projectTmpDirName, templates, data);
+    }
+
+    private List<ProjectFile> getProjectFiles(String parentDir, List<Code> templates, Map<String, Object> placeholder) {
+        List<ProjectFile> result = new ArrayList<>();
+        for (Code template : templates) {
+            String location = String.join(fileSeparator, template.getLocation().split("/"));
+            location = String.join(fileSeparator, parentDir, location);
+            location = freemarkerService.getString(location, placeholder);
+            byte[] content = freemarkerService.getBytes(template.getText(), placeholder);
+            result.add(new ProjectFile(location, content));
         }
-
-        createFiles(projectTmpDirName, projectContents);
+        return result;
     }
 
-    private ProjectContent templateToCode(Code code, Object placeholder) {
-        byte[] content = freemarkerService.getBytes(code.getText(), placeholder);
-        String location = freemarkerService.getString(code.getLocation(), placeholder);
-        return new ProjectContent(FILE, location, content);
-    }
-
-    private void createFiles(String projectDir, List<ProjectContent> contents) {
-        for (ProjectContent content : contents) {
-            String location = projectDir + fileSeparator
-                    + String.join(fileSeparator, content.getLocation().split("/"));
-            if (content.isFile()) {
-                try {
-                    FileUtils.writeByteArrayToFile(new File(location), content.getContent());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                try {
-                    FileUtil.createDir(location);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+    private void createFiles(List<ProjectFile> projectFiles) {
+        for (ProjectFile projectFile : projectFiles) {
+            try {
+                FileUtils.writeByteArrayToFile(new File(projectFile.getLocation()), projectFile.getContent());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }

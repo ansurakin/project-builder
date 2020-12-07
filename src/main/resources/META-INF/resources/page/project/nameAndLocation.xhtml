@@ -51,13 +51,20 @@
                     <p:inputText id="description" value="#{nameAndLocationPageAction.project.pom.description}"/>
                     <p:spacer/>
 
-                    <ui:remove><!--TODO auto concat--></ui:remove>
-                    <p:outputLabel for="packageName" value="packageName:"/>
-                    <p:inputText id="packageName" value="#{nameAndLocationPageAction.project.packageName}"/>
+                    <p:outputLabel for="@next" value="projectName:"/>
+                    <p:inputText id="projectName" value="#{nameAndLocationPageAction.project.projectName}">
+                        <p:ajax event="keyup" update="projectDir"/>
+                    </p:inputText>
                     <p:spacer/>
 
-                    <p:outputLabel for="location" value="location:"/>
-                    <p:inputText id="location" value="#{nameAndLocationPageAction.project.location}"/>
+                    <p:outputLabel for="@next" value="parentDir:"/>
+                    <p:inputText id="parentDir" value="#{nameAndLocationPageAction.project.parentDir}">
+                        <p:ajax event="keyup" update="projectDir"/>
+                    </p:inputText>
+                    <p:spacer/>
+
+                    <p:outputLabel for="@next" value="projectDir:"/>
+                    <h:outputText id="projectDir" value="#{nameAndLocationPageAction.project.projectDir}"/>
                     <p:spacer/>
 
                 </p:panelGrid>

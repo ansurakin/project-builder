@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:myComponent="http://xmlns.jcp.org/jsf/composite/template/lib/button"
+
+                template="/template/mainLayout.xhtml">
+
+    <ui:define name="title">
+        Новый проект
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h:form id="finishForm">
+
+            <!--Навигационные кнопки-->
+            <myComponent:step-button-group
+                    previousButtonAction="#{finishPageAction.prevous}"
+                    nextButtonDisabled="true"
+                    finishButtonDisabled="true"
+                    cancellButtonAction="#{finishPageAction.cancell}"/>
+
+            <div style="text-decoration: underline;">
+                <h3>Файлы проекта</h3>
+            </div>
+
+            <p:commandButton id="createButton"
+                             value="Создать"
+                             action="#{finishPageAction.create}"/>
+
+            <p:accordionPanel
+                    multiple="true"
+                    activeIndex="-1"
+                    value="#{finishPageAction.projectFiles}"
+                    var="projectFile">
+                <p:tab title="#{projectFile.location}">
+                    <pe:codeMirror
+                            readonly="true"
+                            mode="javascript"
+                            theme="blackboard"
+                            keyMap="default"
+                            lineNumbers="true"
+                            matchBrackets="true"
+                            value="#{finishPageAction.bytesToString(projectFile.content)}"/>
+                </p:tab>
+            </p:accordionPanel>
+
+        </h:form>
+
+
+    </ui:define>
+
+
+</ui:composition>
