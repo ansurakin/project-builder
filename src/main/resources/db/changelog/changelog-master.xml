@@ -8,5 +8,6 @@
     <!--    Выполнить вручную. Т.к. ошибка jdbc драйвера: после }; требует ' -->
     <!--    <include file="src/main/resources/db/changelog/changes/initial-structure-and-data.sql"/>-->
     <include file="src/main/resources/db/changelog/changes/001-select.sql"/>
+    <include file="src/main/resources/db/changelog/changes/002-create-application_property.sql"/>
 
 </databaseChangeLog>

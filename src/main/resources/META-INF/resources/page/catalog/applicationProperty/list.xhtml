@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+
+                template="/template/mainLayout.xhtml">
+
+    <ui:define name="title">
+        Список
+    </ui:define>
+
+
+    <ui:define name="content">
+
+        <h3>Справочник заполнителей</h3>
+
+        <h:form id="applicationPropertyListForm">
+
+            <div class="ui-g">
+                <p:button href="/page/catalog/applicationProperty/create"
+                          value="Создать"
+                          icon="fa fa-fw fa-edit"
+                          target="_blank"/>
+            </div>
+
+            <p:dataTable id="applicationPropertyListDt"
+                         value="#{applicationPropertyListPageAction.list}"
+                         var="item"
+                         filteredValue="#{applicationPropertyListPageAction.filteredList}"
+                         emptyMessage="Нет данных"
+                         sortMode="multiple"
+                         paginator="true" rows="20"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,20,100"
+                         editable="true">
+
+                <p:ajax event="rowEdit" listener="#{applicationPropertyListPageAction.onRowEdit}"/>
+                <p:ajax event="rowEditCancel" listener="#{applicationPropertyListPageAction.onRowCancel}"/>
+
+                <p:column headerText="Id"
+                          sortBy="#{item.id}"
+                          filterBy="#{item.id}"
+                          filterMatchMode="contains"
+                          width="10%">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+                <p:column headerText="key"
+                          sortBy="#{item.key}"
+                          filterBy="#{item.key}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.key}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.key}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="value"
+                          sortBy="#{item.value}"
+                          filterBy="#{item.value}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.value}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.value}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="description"
+                          sortBy="#{item.description}"
+                          filterBy="#{item.description}"
+                          filterMatchMode="contains"
+                          width="20%">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{item.description}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{item.description}"
+                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <!--Редактирование begin-->
+                <p:column headerText="Edit" style="width:5%">
+                    <p:rowEditor/>
+                </p:column>
+
+                <p:column headerText="Delete" style="width:5%">
+                    <p:commandButton actionListener="#{applicationPropertyListPageAction.delete(item)}"
+                                     update=":applicationPropertyListForm"
+                                     icon="ui-icon-trash"/>
+                </p:column>
+                <!--Редактирование end-->
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

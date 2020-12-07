@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
-@Table(name = "placeholder")
-public class Placeholder extends BaseEntity {
+@Table(name = "application_property")
+public class ApplicationProperty extends BaseEntity {
 
     @NotNull
     @Column(name = "key")
