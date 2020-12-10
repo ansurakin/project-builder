@@ -3,6 +3,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
 
                 template="/template/mainLayout.xhtml">
 
@@ -41,14 +42,14 @@
                           sortBy="#{item.id}"
                           filterBy="#{item.id}"
                           filterMatchMode="contains"
-                          width="10%">
+                          width="5%">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
 
                 <p:column headerText="key"
                           sortBy="#{item.key}"
                           filterBy="#{item.key}" filterMatchMode="contains"
-                          width="20%">
+                          width="10%">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{item.key}"/></f:facet>
                         <f:facet name="input"><p:inputText value="#{item.key}"
@@ -70,13 +71,14 @@
                 <p:column headerText="text"
                           sortBy="#{item.text}"
                           filterBy="#{item.text}" filterMatchMode="contains"
-                          width="20%">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText
-                                value="#{item.text.length() gt 100 ? item.text.substring(0,97).concat('...') : item.text}"/></f:facet>
-                        <f:facet name="input"><p:inputText value="#{item.text}"
-                                                           style="width:100%; box-sizing: border-box;"/></f:facet>
-                    </p:cellEditor>
+                          width="30%">
+                    <pe:codeMirror id="text"
+                                   mode="javascript"
+                                   theme="blackboard"
+                                   value="#{item.text}"
+                                   keyMap="default"
+                                   lineNumbers="true"
+                                   matchBrackets="true"/>
                 </p:column>
 
                 <!--Редактирование begin-->
